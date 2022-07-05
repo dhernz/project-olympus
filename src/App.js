@@ -1,5 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
+import React from "react";
+import { WalletLinkConnector } from "@web3-react/walletlink-connector";
+import { WalletConnectConnector } from "@web3-react/walletconnect-connector";
+import { InjectedConnector } from "@web3-react/injected-connector";
+import { useWeb3React } from '@web3-react/core';
+
 import {
   GoogleMap,
   useLoadScript,
@@ -37,10 +43,29 @@ const options = {
   disableDefaultUI: true,
 }
 
+const CoinbaseWallet = new WalletLinkConnector({
+  url: `https://mainnet.infura.io/v3/${process.env.INFURA_KEY}`,
+  appName: "Web3-react Demo",
+  supportedChainIds: [1, 3, 4, 5, 42],
+ });  
+
+ const WalletConnect = new WalletConnectConnector({
+  rpcUrl: `https://mainnet.infura.io/v3/${process.env.INFURA_KEY}`,
+  bridge: "https://bridge.walletconnect.org",
+  qrcode: true,
+ });
+
+ const Injected = new InjectedConnector({
+  supportedChainIds: [1, 3, 4, 5, 42]
+ });
+
 function App() {
+  const { activate, deactivate } = useWeb3React();
+  const { active, chainId, account } = useWeb3React();
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     libraries,
+
   });
 
   if (loadError) return "Error";
@@ -50,8 +75,15 @@ function App() {
     <div className="App">
       <h1>
         Olympus
+        <button onClick={() => { activate(CoinbaseWallet) }}>Coinbase Wallet</button>
+        <button onClick={() => { activate(WalletConnect) }}>Wallet Connect</button>
+        <button onClick={() => { activate(Injected) }}>Metamask</button>
+        <button onClick={deactivate}>Disconnect</button>
+        <div>Wallet: {account}</div>
+      
       </h1>
-
+    
+     
       <GoogleMap
         mapContainerStyle={mapContainerStyle}
         zoom={12}
