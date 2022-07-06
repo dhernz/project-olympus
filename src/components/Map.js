@@ -1,6 +1,7 @@
 import React from "react";
 import mapStyles from "./mapStyles";
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
+import { InfoWindow } from "@react-google-maps/api";
 
 const libraries = ["places"];
 const mapContainerStyle = {
@@ -25,7 +26,7 @@ const Map = () => {
   });
 
   const [markers, setMarkers] = React.useState([]);
-  const [setSelected] = React.useState(null);
+  const [selected, setSelected] = React.useState(null);
 
   const mapRef = React.useRef();
   const onMapLoad = React.useCallback((map) => {
@@ -68,6 +69,17 @@ const Map = () => {
             }}
           />
         ))}
+
+        {selected ? (
+          <InfoWindow
+            position={{ lat: selected.lat, lng: selected.lng }}
+            onCloseClick={() => setSelected(null)}
+          >
+            <div>
+              <h2>hello</h2>
+            </div>
+          </InfoWindow>
+        ) : null}
       </GoogleMap>
     );
   } else {
