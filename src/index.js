@@ -6,6 +6,9 @@ import reportWebVitals from "./reportWebVitals";
 import { Web3ReactProvider } from "@web3-react/core";
 import { Web3Provider } from "@ethersproject/providers";
 
+
+
+//provider for coinbaseWallet
 function getLibrary(provider) {
   return new Web3Provider(provider);
 }
