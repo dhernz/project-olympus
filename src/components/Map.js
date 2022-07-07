@@ -1,7 +1,9 @@
 import React from "react";
 import mapStyles from "./mapStyles";
-import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
+import { GoogleMap, useLoadScript } from "@react-google-maps/api";
 import { InfoWindow } from "@react-google-maps/api";
+import Marker from "./Marker.tsx";
+import defaultIcons from "./defaultIcons";
 
 const libraries = ["places"];
 const mapContainerStyle = {
@@ -25,8 +27,13 @@ const Map = () => {
     libraries,
   });
 
-  const [markers, setMarkers] = React.useState([]);
+  const [markers, setMarkers] = React.useState(defaultIcons);
   const [selected, setSelected] = React.useState(null);
+
+  // React.useEffect(() => {
+  //   console.log("in use effect");
+  //   setMarkers([...defaultIcons, defaultIcons[0]]);
+  // }, []);
 
   const mapRef = React.useRef();
   const onMapLoad = React.useCallback((map) => {
@@ -39,12 +46,14 @@ const Map = () => {
       {
         lat: event.latLng.lat(),
         lng: event.latLng.lng(),
-        time: new Date(),
+        url: "https://upload.wikimedia.org/wikipedia/commons/4/46/Bitcoin.svg",
       },
     ]);
   }, []);
 
   if (isLoaded) {
+    console.log(markers);
+
     return (
       <GoogleMap
         mapContainerStyle={mapContainerStyle}
@@ -56,17 +65,9 @@ const Map = () => {
       >
         {markers.map((marker) => (
           <Marker
-            key={marker.time.toISOString()}
-            position={{ lat: marker.lat, lng: marker.lng }}
-            icon={{
-              url: "https://upload.wikimedia.org/wikipedia/commons/4/46/Bitcoin.svg",
-              scaledSize: new window.google.maps.Size(30, 30),
-              origin: new window.google.maps.Point(0, 0),
-              anchor: new window.google.maps.Point(15, 15),
-            }}
-            onClick={() => {
-              setSelected(marker);
-            }}
+            key={`${marker.lat}, ${marker.lng}`}
+            marker={marker}
+            setSelected={setSelected}
           />
         ))}
 
