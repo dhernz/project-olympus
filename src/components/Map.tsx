@@ -1,11 +1,11 @@
-import React from "react";
+import React, { MutableRefObject } from "react";
 import mapStyles from "./mapStyles";
 import { GoogleMap, useLoadScript } from "@react-google-maps/api";
 import { InfoWindow } from "@react-google-maps/api";
-import Marker from "./Marker.tsx";
+import Marker from "./Marker";
 import defaultIcons from "./defaultIcons";
 
-const libraries = ["places"];
+const libraries: "places"[] = ["places"];
 const mapContainerStyle = {
   height: "100vh",
   width: "100vw",
@@ -23,37 +23,34 @@ const options = {
 
 const Map = () => {
   const { isLoaded } = useLoadScript({
-    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY
+      ? process.env.REACT_APP_GOOGLE_MAPS_API_KEY
+      : "",
     libraries,
   });
 
-  const [markers, setMarkers] = React.useState(defaultIcons);
-  const [selected, setSelected] = React.useState(null);
+  const [markers, setMarkers] = React.useState<Marker[]>(defaultIcons);
+  const [selected, setSelected] = React.useState<Marker | null>(null);
 
-  // React.useEffect(() => {
-  //   console.log("in use effect");
-  //   setMarkers([...defaultIcons, defaultIcons[0]]);
-  // }, []);
-
-  const mapRef = React.useRef();
-  const onMapLoad = React.useCallback((map) => {
+  const mapRef: MutableRefObject<google.maps.Map | undefined> = React.useRef();
+  const onMapLoad = React.useCallback((map: google.maps.Map) => {
     mapRef.current = map;
   }, []);
 
-  const onMapClick = React.useCallback((event) => {
+  const onMapClick = React.useCallback((event: any) => {
     setMarkers((current) => [
       ...current,
       {
         lat: event.latLng.lat(),
         lng: event.latLng.lng(),
         url: "https://upload.wikimedia.org/wikipedia/commons/4/46/Bitcoin.svg",
+        width: 30,
+        height: 30,
       },
     ]);
   }, []);
 
   if (isLoaded) {
-    console.log(markers);
-
     return (
       <GoogleMap
         mapContainerStyle={mapContainerStyle}
