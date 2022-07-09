@@ -2,8 +2,10 @@ import React, { MutableRefObject } from "react";
 import mapStyles from "./mapStyles";
 import { GoogleMap, useLoadScript } from "@react-google-maps/api";
 import { InfoWindow } from "@react-google-maps/api";
-import Marker from "./Marker";
-import defaultIcons from "./defaultIcons";
+import MarkerComponent, { IMarker } from "./Marker";
+import defaultMarkers from "./defaultMarkers";
+import IPolygon, { PolygonComponent } from "./Polygon";
+import defaultPolygons from "./defaultPolygons";
 
 const libraries: "places"[] = ["places"];
 const mapContainerStyle = {
@@ -12,8 +14,8 @@ const mapContainerStyle = {
 };
 
 const center = {
-  lat: 40.7831,
-  lng: -73.9712,
+  lat: 40.7411,
+  lng: -73.9897,
 };
 
 const options = {
@@ -29,43 +31,34 @@ const Map = () => {
     libraries,
   });
 
-  const [markers, setMarkers] = React.useState<Marker[]>(defaultIcons);
-  const [selected, setSelected] = React.useState<Marker | null>(null);
+  const [markers, setMarkers] = React.useState<IMarker[]>(defaultMarkers);
+  const [selected, setSelected] = React.useState<IMarker | null>(null);
+  const [polygons, setPolygons] = React.useState<IPolygon[]>(defaultPolygons);
 
   const mapRef: MutableRefObject<google.maps.Map | undefined> = React.useRef();
   const onMapLoad = React.useCallback((map: google.maps.Map) => {
     mapRef.current = map;
   }, []);
 
-  const onMapClick = React.useCallback((event: any) => {
-    setMarkers((current) => [
-      ...current,
-      {
-        lat: event.latLng.lat(),
-        lng: event.latLng.lng(),
-        url: "https://upload.wikimedia.org/wikipedia/commons/4/46/Bitcoin.svg",
-        width: 30,
-        height: 30,
-      },
-    ]);
-  }, []);
-
   if (isLoaded) {
     return (
       <GoogleMap
         mapContainerStyle={mapContainerStyle}
-        zoom={12}
+        zoom={14}
         center={center}
         options={options}
-        onClick={onMapClick}
         onLoad={onMapLoad}
       >
         {markers.map((marker) => (
-          <Marker
+          <MarkerComponent
             key={`${marker.lat}, ${marker.lng}`}
             marker={marker}
             setSelected={setSelected}
           />
+        ))}
+
+        {polygons.map((polygon) => (
+          <PolygonComponent key={polygon.key} polygon={polygon} />
         ))}
 
         {selected ? (

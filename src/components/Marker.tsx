@@ -2,7 +2,7 @@ import React, { Dispatch, SetStateAction } from "react";
 
 import { Marker as GoogleMapsMarker } from "@react-google-maps/api";
 
-interface Marker {
+export interface IMarker {
   lat: number;
   lng: number;
   url: string;
@@ -11,11 +11,11 @@ interface Marker {
 }
 
 interface Props {
-  marker: Marker;
-  setSelected: Dispatch<SetStateAction<Marker | null>>;
+  marker: IMarker;
+  setSelected: Dispatch<SetStateAction<IMarker | null>>;
 }
 
-const Marker: React.FC<Props> = ({ marker, setSelected }) => {
+const MarkerComponent: React.FC<Props> = ({ marker, setSelected }) => {
   return (
     <GoogleMapsMarker
       position={{ lat: marker.lat, lng: marker.lng }}
@@ -32,4 +32,4 @@ const Marker: React.FC<Props> = ({ marker, setSelected }) => {
   );
 };
 
-export default Marker;
+export default MarkerComponent;
