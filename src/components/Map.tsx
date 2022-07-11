@@ -33,6 +33,7 @@ const Map = () => {
 
   const [markers, setMarkers] = React.useState<IMarker[]>(defaultMarkers);
   const [polygons, setPolygons] = React.useState<IPolygon[]>(defaultPolygons);
+  const [selected, setSelected] = React.useState<IMarker | null>(null);
   const [open, setOpen] = React.useState(false);
 
   const mapRef: MutableRefObject<google.maps.Map | undefined> = React.useRef();
@@ -50,37 +51,20 @@ const Map = () => {
         onLoad={onMapLoad}
       >
         {markers.map((marker) => (
-          //   <>
-          //   <MarkerComponent
-          //     key={`${marker.lat}, ${marker.lng}`}
-          //     marker={marker}
-          //     setSelected={setSelected}
-          //   />
-          //   {selected ? (
-          //     <InfoWindow
-          //       position={{ lat: selected.lat, lng: selected.lng }}
-          //       onCloseClick={() => setSelected(null)}
-          //     >
-          //       <div>
-          //       <h2>{selected.title}</h2>
-          //         <h3 style={{color: "#56cfe1"}}>{selected.claim}</h3>
-          //         <p style={{color: "#fe0708"}}>{selected.health}</p>
-          //         <p style={{color: "#7851DF"}}>{selected.streak}</p>
-          //         <Button variant="contained">
-          //   {selected.button}
-          // </Button>
-          //       </div>
-          //     </InfoWindow>
-          //   ) : null}
           <MarkerComponent
             key={`${marker.lat}, ${marker.lng}`}
             marker={marker}
             setOpen={setOpen}
+            setSelected={setSelected}
           />
-          // </>
         ))}
 
-        <TransitionModal key={"popup"} setOpen={setOpen} open={open} />
+        <TransitionModal
+          key={"popup"}
+          setOpen={setOpen}
+          open={open}
+          marker={selected}
+        />
 
         {polygons.map((polygon) => (
           <PolygonComponent key={polygon.key} polygon={polygon} />
