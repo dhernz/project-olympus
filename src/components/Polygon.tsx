@@ -21,9 +21,9 @@ export const PolygonComponent: React.FC<Props> = ({ polygon }) => {
     strokeColor: "red",
     strokeOpacity: 1,
     strokeWeight: 2,
-    clickable: true,
-    draggable: true,
-    editable: true,
+    clickable: false,
+    draggable: false,
+    editable: false,
     geodesic: false,
     zIndex: 1,
   };
