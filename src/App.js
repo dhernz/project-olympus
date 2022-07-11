@@ -4,7 +4,7 @@ import { WalletLinkConnector } from "@web3-react/walletlink-connector";
 import { WalletConnectConnector } from "@web3-react/walletconnect-connector";
 import { InjectedConnector } from "@web3-react/injected-connector";
 import { useWeb3React } from "@web3-react/core";
-import Button from '@mui/material/Button';
+import Button from "@mui/material/Button";
 import Map from "./components/Map";
 import { truncateAddress } from "./utils";
 import Chip from '@mui/material/Chip';
@@ -24,8 +24,6 @@ const WalletConnect = new WalletConnectConnector({
 const Injected = new InjectedConnector({
   supportedChainIds: [1, 3, 4, 5, 42],
 });
-
-
 
 function App() {
   const { activate, deactivate } = useWeb3React();

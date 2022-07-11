@@ -17,10 +17,11 @@ export interface IMarker {
 
 interface Props {
   marker: IMarker;
+  setOpen: Dispatch<SetStateAction<boolean>>;
   setSelected: Dispatch<SetStateAction<IMarker | null>>;
 }
 
-const MarkerComponent: React.FC<Props> = ({ marker, setSelected }) => {
+const MarkerComponent: React.FC<Props> = ({ marker, setOpen, setSelected }) => {
   return (
     <GoogleMapsMarker
       position={{ lat: marker.lat, lng: marker.lng }}
@@ -32,6 +33,7 @@ const MarkerComponent: React.FC<Props> = ({ marker, setSelected }) => {
       }}
       onClick={() => {
         setSelected(marker);
+        setOpen(true);
       }}
     />
   );

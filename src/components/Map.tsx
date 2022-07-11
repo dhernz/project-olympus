@@ -1,12 +1,11 @@
 import React, { MutableRefObject } from "react";
 import mapStyles from "./mapStyles";
 import { GoogleMap, useLoadScript } from "@react-google-maps/api";
-import { InfoWindow } from "@react-google-maps/api";
 import MarkerComponent, { IMarker } from "./Marker";
 import defaultMarkers from "./defaultMarkers";
 import IPolygon, { PolygonComponent } from "./Polygon";
 import defaultPolygons from "./defaultPolygons";
-import Button from '@mui/material/Button';
+import TransitionModal from "./TransitionModal";
 
 const libraries: "places"[] = ["places"];
 const mapContainerStyle = {
@@ -33,8 +32,9 @@ const Map = () => {
   });
 
   const [markers, setMarkers] = React.useState<IMarker[]>(defaultMarkers);
-  const [selected, setSelected] = React.useState<IMarker | null>(null);
   const [polygons, setPolygons] = React.useState<IPolygon[]>(defaultPolygons);
+  const [selected, setSelected] = React.useState<IMarker | null>(null);
+  const [open, setOpen] = React.useState(false);
 
   const mapRef: MutableRefObject<google.maps.Map | undefined> = React.useRef();
   const onMapLoad = React.useCallback((map: google.maps.Map) => {
@@ -51,36 +51,24 @@ const Map = () => {
         onLoad={onMapLoad}
       >
         {markers.map((marker) => (
-          <>
           <MarkerComponent
             key={`${marker.lat}, ${marker.lng}`}
             marker={marker}
+            setOpen={setOpen}
             setSelected={setSelected}
           />
-          {selected ? (
-            <InfoWindow
-              position={{ lat: selected.lat, lng: selected.lng }}
-              onCloseClick={() => setSelected(null)}
-            >
-              <div>
-              <h2>{selected.title}</h2>
-                <h3 style={{color: "#56cfe1"}}>{selected.claim}</h3>
-                <p style={{color: "#fe0708"}}>{selected.health}</p>
-                <p style={{color: "#7851DF"}}>{selected.streak}</p>
-                <Button variant="contained">
-          {selected.button}
-        </Button>
-              </div>
-            </InfoWindow>
-          ) : null}
-          </>
         ))}
+
+        <TransitionModal
+          key={"popup"}
+          setOpen={setOpen}
+          open={open}
+          marker={selected}
+        />
 
         {polygons.map((polygon) => (
           <PolygonComponent key={polygon.key} polygon={polygon} />
         ))}
-
-        
       </GoogleMap>
     );
   } else {
