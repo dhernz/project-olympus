@@ -66,10 +66,6 @@ function App() {
           >
             {account ? <div>{truncateAddress(account)}</div> : "Connect Wallet"}
           </Button>
-
-          <Button variant="outlined" onClick={signMessage}>
-            {signature ? "Transaction Verified" : "Sign Message" }
-          </Button>
         </div>
       </div>
       <Map />
