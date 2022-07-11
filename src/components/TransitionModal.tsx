@@ -25,6 +25,13 @@ interface Props {
 
 const TransitionModal: FC<Props> = ({ setOpen, open, marker }) => {
   const handleClose = () => setOpen(false);
+  const handleClick = (claim: string) => {
+    const claimed = claim !== "Unclaimed";
+    const link = claimed
+      ? "https://projectolympus.8thwall.app/hack-house/start"
+      : "https://projectolympus.8thwall.app/hack-house/claim";
+    window.open(link, "_blank");
+  };
 
   return (
     <Modal
@@ -47,7 +54,12 @@ const TransitionModal: FC<Props> = ({ setOpen, open, marker }) => {
                 <h3 style={{ color: "#56cfe1" }}>{marker.claim}</h3>
                 <p style={{ color: "#fe0708" }}>{marker.health}</p>
                 <p style={{ color: "#7851DF" }}>{marker.streak}</p>
-                <Button variant="contained">{marker.button}</Button>
+                <Button
+                  variant="contained"
+                  onClick={() => handleClick(marker.claim)}
+                >
+                  {marker.button}
+                </Button>
               </Fragment>
             ) : null}
           </Typography>
