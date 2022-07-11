@@ -1,10 +1,11 @@
-import React, { Dispatch, FC, Fragment, SetStateAction } from "react";
+import React, { Dispatch, FC, Fragment, SetStateAction, useEffect, useState } from "react";
 import Backdrop from "@mui/material/Backdrop";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Typography from "@mui/material/Typography";
 import { Button, Slide } from "@mui/material";
 import { IMarker } from "./Marker";
+import { useWeb3React } from "@web3-react/core";
 
 const style = {
   position: "absolute",
@@ -30,9 +31,42 @@ const TransitionModal: FC<Props> = ({ setOpen, open, marker }) => {
     const claimed = claim !== "Unclaimed";
     const link = claimed
       ? "https://projectolympus.8thwall.app/hack-house/start"
-      : "https://projectolympus.8thwall.app/hack-house/claim";
-    window.open(link, "_blank");
+      : "https://projectolympus.8thwall.app/hack-house/start/claim";
+    
+
+    signMessage(link);
+   
+    
   };
+
+  const [signature, setSignature] = useState("");
+  const [signedMessage, setSignedMessage] = useState("");
+  const [message, setMessage] = useState("Verify location interaction");
+  const [error, setError] = useState("");
+  const { library,activate, deactivate } = useWeb3React();
+  const { account } = useWeb3React();
+
+  const signMessage = async (link: string) => {
+    
+    try {
+      const signature = await library.provider.request({
+        method: "personal_sign",
+        params: [message, account]
+      });
+      setSignedMessage(message);
+      setSignature(signature);
+      setTimeout(()=>{
+        window.open(link, "_blank");
+      },1500)
+      
+    } catch (error) {
+      // setError(error);
+    }
+  };
+
+  // useEffect(()=>{
+   
+  // }, [signature])
 
   return (
     <Modal
@@ -59,7 +93,7 @@ const TransitionModal: FC<Props> = ({ setOpen, open, marker }) => {
                   variant="contained"
                   onClick={() => handleClick(marker.claim)}
                 >
-                  {marker.button}
+                  {signature ? "Transaction Verified" : marker.button}
                 </Button>
               </Fragment>
             ) : null}

@@ -33,7 +33,7 @@ function App() {
   const { account } = useWeb3React();
   const [signature, setSignature] = useState("");
   const [signedMessage, setSignedMessage] = useState("");
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState("Verify location interaction");
   const [error, setError] = useState("");
 
   const signMessage = async () => {
@@ -68,7 +68,7 @@ function App() {
           </Button>
 
           <Button variant="outlined" onClick={signMessage}>
-            Sign Message
+            {signature ? "Transaction Verified" : "Sign Message" }
           </Button>
         </div>
       </div>
