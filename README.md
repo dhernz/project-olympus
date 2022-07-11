@@ -19,12 +19,14 @@ Claim, Collect, Upgrade, Attack..
 
 ## Technologies
 
+- Coinbase Wallet
+
+
 - Google Maps JavaScript API (Kian)
 We are using the Google Maps React library to render an interactive view of AR locations. 
 
-- Backend
-
-- Database (Steffen)
+- Backend and Database (Firebase)
+We are utilizing Firebase to track metadata about each AR location. It is also used to pull information about how many tokens have been accrued at a location. This is called when players try to collect tokens from a location. 
 
 - Smart Contracts (Solidity, Polygon)
 We created two custom smart contracts. One for minting 1 trillion $OLY reward tokens and one for in-game player interactions. The Player interactions are vandalize: takes X amount of tokens out of the players wallet to reduce a locations health points. , upgrade: takes X amount of tokens out of the players wallet to reduce a locations health points, claim: distributes $OLY token rewards to users for daily and multiplier bonuses. The user has to approve the transaction contract to transfer tokens. The contracts inherit the ERC-2771 context contract which enables gasless transactions. 
