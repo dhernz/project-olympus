@@ -46,11 +46,11 @@ const TransitionModal: FC<Props> = ({ setOpen, open, marker }) => {
       }}
     >
       <Slide in={open} direction={"up"} mountOnEnter unmountOnExit>
-        <Box sx={style} alignItems="center" justifyContent="center">
+        <Box sx={style} alignItems="center" justifyContent="center" style={{backgroundColor: '#04161F'}}>
           <Typography id="transition-modal-description" sx={{ mt: 2 }}>
             {marker ? (
               <Fragment>
-                <h2>{marker.title}</h2>
+                <h2 style={{ color: "white" }}>{marker.title}</h2>
                 <h3 style={{ color: "#56cfe1" }}>{marker.claim}</h3>
                 <p style={{ color: "#fe0708" }}>{marker.health}</p>
                 <p style={{ color: "#7851DF" }}>{marker.streak}</p>
