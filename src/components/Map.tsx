@@ -62,7 +62,8 @@ const Map = () => {
               onCloseClick={() => setSelected(null)}
             >
               <div>
-                <h3 style={{color: "#56cfe1"}}>{selected.title}</h3>
+              <h2>{selected.title}</h2>
+                <h3 style={{color: "#56cfe1"}}>{selected.claim}</h3>
                 <p style={{color: "#fe0708"}}>{selected.health}</p>
                 <p style={{color: "#7851DF"}}>{selected.streak}</p>
               </div>

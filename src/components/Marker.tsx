@@ -4,6 +4,7 @@ import { Marker as GoogleMapsMarker } from "@react-google-maps/api";
 
 export interface IMarker {
   title: string;
+  claim: string;
   health: string;
   streak: string;
   lat: number;
