@@ -11,10 +11,11 @@ const style = {
   width: "100%",
   height: "30%",
   bottom: 0,
-  bgcolor: "background.paper",
+  bgcolor: "#04161F",
   border: "2px solid #000",
   boxShadow: 24,
-  p: 4,
+  px: 2,
+  pb: 5,
 };
 
 interface Props {
@@ -46,7 +47,7 @@ const TransitionModal: FC<Props> = ({ setOpen, open, marker }) => {
       }}
     >
       <Slide in={open} direction={"up"} mountOnEnter unmountOnExit>
-        <Box sx={style} alignItems="center" justifyContent="center" style={{backgroundColor: '#04161F'}}>
+        <Box sx={style} alignItems="center" justifyContent="center">
           <Typography id="transition-modal-description" sx={{ mt: 2 }}>
             {marker ? (
               <Fragment>
