@@ -17,10 +17,13 @@ code {
   align-items: center;
   justify-content:space-between;
   height: 5rem;
-  background-color: #010914;
+  background-color: #04161F;
   padding-left: 1rem;
   padding-right: 1rem;
 }
 
-
+.wallet {
+  display: flex;
+  align-items: center;
+}
 

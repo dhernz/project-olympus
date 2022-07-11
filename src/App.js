@@ -7,6 +7,7 @@ import { useWeb3React } from "@web3-react/core";
 import Button from "@mui/material/Button";
 import Map from "./components/Map";
 import { truncateAddress } from "./utils";
+import Chip from '@mui/material/Chip';
 
 const CoinbaseWallet = new WalletLinkConnector({
   url: `https://mainnet.infura.io/v3/${process.env.INFURA_KEY}`,

@@ -1,9 +1,10 @@
-import React, { Dispatch, FC, SetStateAction } from "react";
+import React, { Dispatch, FC, Fragment, SetStateAction } from "react";
 import Backdrop from "@mui/material/Backdrop";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Typography from "@mui/material/Typography";
-import { Slide } from "@mui/material";
+import { Button, Slide } from "@mui/material";
+import { IMarker } from "./Marker";
 
 const style = {
   position: "absolute",
@@ -19,10 +20,18 @@ const style = {
 interface Props {
   setOpen: Dispatch<SetStateAction<boolean>>;
   open: boolean;
+  marker: IMarker | null;
 }
 
-const TransitionModal: FC<Props> = ({ setOpen, open }) => {
+const TransitionModal: FC<Props> = ({ setOpen, open, marker }) => {
   const handleClose = () => setOpen(false);
+  const handleClick = (claim: string) => {
+    const claimed = claim !== "Unclaimed";
+    const link = claimed
+      ? "https://projectolympus.8thwall.app/hack-house/start"
+      : "https://projectolympus.8thwall.app/hack-house/claim";
+    window.open(link, "_blank");
+  };
 
   return (
     <Modal
@@ -37,12 +46,22 @@ const TransitionModal: FC<Props> = ({ setOpen, open }) => {
       }}
     >
       <Slide in={open} direction={"up"} mountOnEnter unmountOnExit>
-        <Box sx={style} alignItems="center" justifyContent="center">
-          <Typography id="transition-modal-title" variant="h6" component="h2">
-            Text
-          </Typography>
+        <Box sx={style} alignItems="center" justifyContent="center" style={{backgroundColor: '#04161F'}}>
           <Typography id="transition-modal-description" sx={{ mt: 2 }}>
-            Duis mollis
+            {marker ? (
+              <Fragment>
+                <h2 style={{ color: "white" }}>{marker.title}</h2>
+                <h3 style={{ color: "#56cfe1" }}>{marker.claim}</h3>
+                <p style={{ color: "#fe0708" }}>{marker.health}</p>
+                <p style={{ color: "#7851DF" }}>{marker.streak}</p>
+                <Button
+                  variant="contained"
+                  onClick={() => handleClick(marker.claim)}
+                >
+                  {marker.button}
+                </Button>
+              </Fragment>
+            ) : null}
           </Typography>
         </Box>
       </Slide>
