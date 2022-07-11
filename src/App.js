@@ -34,18 +34,19 @@ function App() {
       <div className="toolbar">
         <img alt="logo" style={{ width: 140 }} src="./Olympus-Game-Logo.png" />
         <div className="wallet">
+        <Chip label="$OLY: 10" style={{color: 'white', backgroundColor: 'grey', marginRight: "1rem", fontSize: ".6rem"}}/>
           <Button
             variant="contained"
-            style={{ marginRight: "1rem" }}
+            style={{ marginRight: "1rem", fontSize: '.6rem'  }}
             onClick={() => {
               activate(CoinbaseWallet);
             }}
           >
             {account ? <div>{truncateAddress(account)}</div> : "Connect Wallet"}
           </Button>
-          <Button variant="outlined" onClick={deactivate}>
+          {/* <Button variant="outlined" onClick={deactivate}>
             Disconnect
-          </Button>
+          </Button> */}
         </div>
       </div>
       <Map />
