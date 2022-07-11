@@ -31,7 +31,7 @@ export const PolygonComponent: React.FC<Props> = ({ polygon }) => {
   const paths = polygon.paths.map((e) => new google.maps.LatLng(e[0], e[1]));
   const options: PolygonProps = {
     paths: paths,
-    options: polygon.options ? polygon.options : defaultOptions,
+    options: {...defaultOptions, ...polygon.options},
   };
 
   return <GoogleMapsPolygon options={options} />;

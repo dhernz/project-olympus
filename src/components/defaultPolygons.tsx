@@ -1,16 +1,5 @@
 export default [
   {
-    key: "polygon-2",
-    paths: [
-      [40.7672731, -73.9859866], 
-      [40.7594395, -73.9919089], 
-      [40.7549860, -73.9798497], 
-      [40.7628526, -73.9741848], 
-      [40.7672731, -73.9859866], 
-    ],
-    options: null,
-  },
-  {
     key: "polygon-3",
     paths: [
       [40.7129931,-73.9994364], 
@@ -31,7 +20,7 @@ export default [
       [40.7136724,-73.9984080], 
       [40.7131195,-73.9993521], 
     ],
-    options: null,
+    options: {fillColor: "red"},
   },
   {
     key: "polygon-4",
@@ -55,7 +44,7 @@ export default [
       [40.7140125,-74.0060440], 
       [40.7183890,-74.0164754], 
     ],
-    options: null,
+    options: {fillColor: "yellow"}
   },
   {
     key: "polygon-5",
@@ -75,7 +64,7 @@ export default [
       [40.7324059,-74.0104045], 
       [40.7213157,-74.0125073], 
     ],
-    options: null,
+    options: {fillColor: "black"}
   },
   {
     key: "polygon-6",
@@ -93,7 +82,7 @@ export default [
       [40.7360296,-73.9979241], 
       [40.7374279,-73.9967224], 
     ],
-    options: null,
+    options: {fillColor: "blue"}
   },
   {
     key: "polygon-7",
@@ -130,7 +119,7 @@ export default [
       [40.7332106,-73.9866053], 
       [40.7332991,-73.9868046], 
     ],
-    options: null,
+    options: {fillColor: "green"},
   },
 
 ];
