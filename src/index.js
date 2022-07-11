@@ -5,6 +5,8 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { Web3ReactProvider } from "@web3-react/core";
 import { Web3Provider } from "@ethersproject/providers";
+import { theme } from './theme';
+import { ThemeProvider } from '@mui/material/styles';
 
 function getLibrary(provider) {
   return new Web3Provider(provider);
@@ -13,7 +15,13 @@ function getLibrary(provider) {
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Web3ReactProvider getLibrary={getLibrary}>
-    <App />
+    <ThemeProvider theme={theme}>
+      <App />
+    </ThemeProvider>
+    <style>
+      {/* eslint-disable react/no-unescaped-entities */}
+      @import url('https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500&display=swap');
+    </style>
   </Web3ReactProvider>
 );
 

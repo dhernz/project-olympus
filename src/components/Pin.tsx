@@ -33,3 +33,6 @@
 
 // export default PinComponent
 // // export { PinComponent }
+
+const test = '';
+export default test;
