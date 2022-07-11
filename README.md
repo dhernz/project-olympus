@@ -32,3 +32,6 @@ We created two custom smart contracts. One for minting 1 trillion $OLY reward to
 -thirdweb
 We are using thirdweb to deploy our contracts onto the Polygon L2 blockchain. We utilized the thirdweb SDK to facilitate our contract interactions and authorize wallets through their contract authorization script. This script provide a cookie to the user to validate their wallet once every 6 hours rather than requiring the user to re-validate for every transaction. The SDK also enables gasless transactions, provides an alternative to ethers, and has useful prebuilt contracts. 
 
+-IPFS and Storj
+We are using thirdweb deploy to pin the ABI to IPFS. In addition we are using Storj IPFS pinning to host in-game static assets.
+
