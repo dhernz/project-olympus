@@ -22,5 +22,8 @@ code {
   padding-right: 1rem;
 }
 
-
+.wallet {
+  display: flex;
+  align-items: center;
+}
 
