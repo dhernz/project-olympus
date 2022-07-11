@@ -30,6 +30,5 @@ We are using the Google Maps React library to render an interactive view of AR l
 We created two custom smart contracts. One for minting 1 trillion $OLY reward tokens and one for in-game player interactions. The Player interactions are vandalize: takes X amount of tokens out of the players wallet to reduce a locations health points. , upgrade: takes X amount of tokens out of the players wallet to reduce a locations health points, claim: distributes $OLY token rewards to users for daily and multiplier bonuses. The user has to approve the transaction contract to transfer tokens. The contracts inherit the ERC-2771 context contract which enables gasless transactions. 
 
 -thirdweb
-We are using thirdweb to deploy our contracts onto the Polygon L2 blockchain.
-It enables gasless transactions, provides an alternative to ethers, and has useful prebuilt contracts. 
+We are using thirdweb to deploy our contracts onto the Polygon L2 blockchain. We utilized the thirdweb SDK to facilitate our contract interactions and authorize wallets through their contract authorization script. This script provide a cookie to the user to validate their wallet once every 6 hours rather than requiring the user to re-validate for every transaction. The SDK also enables gasless transactions, provides an alternative to ethers, and has useful prebuilt contracts. 
 
