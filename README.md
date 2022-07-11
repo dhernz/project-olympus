@@ -15,7 +15,9 @@ Claim, Collect, Upgrade, Attack..
 
 ### Partnerships
 
+Part of our monetization strategy involves sponsored locations where IRL businesses can host giveaways. Instead of claiming $OLY tokens at this location, users can claim NFT's that can be exchanged for freebies at that business. 
 
+Our first partnership is with Froth NYC https://www.instagram.com/frothnewyork/?hl=en - where users can claim a free coffee by collecting the Froth NFT at their lower east side location.
 
 ## Technologies
 
