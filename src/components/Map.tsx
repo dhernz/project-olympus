@@ -6,6 +6,7 @@ import MarkerComponent, { IMarker } from "./Marker";
 import defaultMarkers from "./defaultMarkers";
 import IPolygon, { PolygonComponent } from "./Polygon";
 import defaultPolygons from "./defaultPolygons";
+import Button from '@mui/material/Button';
 
 const libraries: "places"[] = ["places"];
 const mapContainerStyle = {
@@ -66,6 +67,9 @@ const Map = () => {
                 <h3 style={{color: "#56cfe1"}}>{selected.claim}</h3>
                 <p style={{color: "#fe0708"}}>{selected.health}</p>
                 <p style={{color: "#7851DF"}}>{selected.streak}</p>
+                <Button variant="contained">
+          {selected.button}
+        </Button>
               </div>
             </InfoWindow>
           ) : null}

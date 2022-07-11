@@ -7,6 +7,7 @@ export interface IMarker {
   claim: string;
   health: string;
   streak: string;
+  button: string;
   lat: number;
   lng: number;
   url: string;
