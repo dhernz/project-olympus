@@ -1,5 +1,8 @@
 export default [
   {
+    title: "Claimed by: Bored Ape Yacht Club",
+    health: "550 health hearts",
+    streak: "Streak: 1 months: earning 55x $OLY daily",
     lat: 40.748817,
     lng: -73.985428,
     url: "https://cdn-icons-png.flaticon.com/512/683/683271.png",
@@ -7,6 +10,9 @@ export default [
     height: 50,
   },
   {
+    title: "Claimed by: LaunchHouse",
+    health: "5 health hearts",
+    streak: "Streak: 1 months: earning 55x $OLY daily",
     lat: 40.7411,
     lng: -73.9897,
     url: "https://cdn.iconscout.com/icon/premium/png-256-thumb/the-flatiron-building-2780854-2306695.png",
@@ -14,6 +20,9 @@ export default [
     height: 50,
   },
   {
+    title: "Claimed by: LaunchHouse",
+    health: "5 health hearts",
+    streak: "Streak: 1 months: earning 55x $OLY daily",
     lat: 40.739963376023745,
     lng: -74.00091004484392,
     url: "https://i.ibb.co/nfmNycB/launch-house-logo.png",
@@ -21,6 +30,9 @@ export default [
     height: 50,
   },
   {
+    title: "Claimed by: Bored Ape Yacht Club",
+    health: "550 health hearts",
+    streak: "Streak: 1 months: earning 55x $OLY daily",
     lat: 40.748699610544115,
     lng: -73.98573131600787,
     url: "https://i.ibb.co/ZTjcHDb/bayc-logo.webp",
@@ -28,6 +40,9 @@ export default [
     height: 50,
   },
   {
+    title: "Claimed by: Bored Ape Yacht Club",
+    health: "550 health hearts",
+    streak: "Streak: 1 months: earning 55x $OLY daily",
     lat: 40.736308135599636,
     lng: -73.99019053532241,
     url: "https://i.ibb.co/ZTjcHDb/bayc-logo.webp",
@@ -35,6 +50,9 @@ export default [
     height: 50,
   },
   {
+    title: "Claimed by: Blu3 DAO",
+    health: "100 health hearts",
+    streak: "Streak: 1 months: earning 55x $OLY daily",
     lat: -40.75820338847002,
     lng: -73.98529433135043,
     url: "https://i.ibb.co/j3c2FjV/her-dao-logo.png",
@@ -42,6 +60,19 @@ export default [
     height: 50,
   },
   {
+    title: "Claimed by: H.E.R. DAO",
+    health: "100 health hearts",
+    streak: "Streak: 1 months: earning 55x $OLY daily",
+    lat: -40.75820338847002,
+    lng: -73.98529433135043,
+    url: "https://i.ibb.co/j3c2FjV/her-dao-logo.png",
+    width: 50,
+    height: 50,
+  },
+  {
+    title: "Claimed by: Empire DAO",
+    health: "250 health hearts",
+    streak: "Streak: 1 months: earning 55x $OLY daily",
     lat: 40.74174332266331,
     lng: -73.98978443068586,
     url: "https://i.ibb.co/qgXRtbP/empire-dao-logo.jpg",

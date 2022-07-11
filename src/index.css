@@ -12,26 +12,14 @@ code {
     monospace;
 }
 
-h1{
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
-  color: #d7caca;
-  z-index: 10;
-  margin: 0;
-  padding: 0;
-
-  background-color: rgba(0, 0, 0, 0.4);
-}
-
-.wallet{
-position: absolute;
-top: 1rem;
-left: 10rem;
-color: #cdd7ca;
-z-index: 10;
-margin: 0;
-padding: 0;
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content:space-between;
+  height: 5rem;
+  background-color: #010914;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 

@@ -6,6 +6,7 @@ import { InjectedConnector } from "@web3-react/injected-connector";
 import { useWeb3React } from "@web3-react/core";
 import Button from '@mui/material/Button';
 import Map from "./components/Map";
+import { truncateAddress } from "./utils";
 
 
 const CoinbaseWallet = new WalletLinkConnector({
@@ -32,22 +33,22 @@ function App() {
 
   return (
     <div className="App">
-      <h1>
-      <img alt='logo' style={{ width: 175 }} src="./Olympus-Logo.png" />
-      </h1>
+      <div className="toolbar">
+      <img alt='logo' style={{ width: 140 }} src="./Olympus-Game-Logo.png" />
       <div className="wallet">
         <Button variant="contained"
+        style={{ marginRight: '1rem' }}
           onClick={() => {
             activate(Injected);
           }}
         >
-          {account ? <div>{account}</div> : 'Connect Wallet'}
+          {account ? <div>{truncateAddress(account)}</div> : 'Connect Wallet'}
 
         </Button>
-        <Button variant="text" onClick={deactivate}>Disconnect</Button>
+        <Button variant="outlined" onClick={deactivate}>Disconnect</Button>
         
       </div>  
-      
+      </div>
       <Map />
     </div>
   );

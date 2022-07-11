@@ -3,6 +3,9 @@ import React, { Dispatch, SetStateAction } from "react";
 import { Marker as GoogleMapsMarker } from "@react-google-maps/api";
 
 export interface IMarker {
+  title: string;
+  health: string;
+  streak: string;
   lat: number;
   lng: number;
   url: string;

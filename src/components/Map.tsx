@@ -50,27 +50,32 @@ const Map = () => {
         onLoad={onMapLoad}
       >
         {markers.map((marker) => (
+          <>
           <MarkerComponent
             key={`${marker.lat}, ${marker.lng}`}
             marker={marker}
             setSelected={setSelected}
           />
+          {selected ? (
+            <InfoWindow
+              position={{ lat: selected.lat, lng: selected.lng }}
+              onCloseClick={() => setSelected(null)}
+            >
+              <div>
+                <h3 style={{color: "#56cfe1"}}>{selected.title}</h3>
+                <p style={{color: "#fe0708"}}>{selected.health}</p>
+                <p style={{color: "#7851DF"}}>{selected.streak}</p>
+              </div>
+            </InfoWindow>
+          ) : null}
+          </>
         ))}
 
         {polygons.map((polygon) => (
           <PolygonComponent key={polygon.key} polygon={polygon} />
         ))}
 
-        {selected ? (
-          <InfoWindow
-            position={{ lat: selected.lat, lng: selected.lng }}
-            onCloseClick={() => setSelected(null)}
-          >
-            <div>
-              <h2>hello</h2>
-            </div>
-          </InfoWindow>
-        ) : null}
+        
       </GoogleMap>
     );
   } else {
