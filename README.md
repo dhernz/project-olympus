@@ -2,7 +2,8 @@
 <img width="556" alt="Screen Shot 2022-07-10 at 11 15 05 PM" src="https://user-images.githubusercontent.com/12074151/178182028-4af0854f-d5ad-4fe7-a9f0-1998768fdd1b.png">
 
 ## Important Links
-- [AR Demo](https://projectolympus.8thwall.app/hack-house/start)
+- [Demo](https://project-olympus-fe.vercel.app/)
+- [AR Experience](https://projectolympus.8thwall.app/hack-house/start)
 - [Frontend Repo](https://github.com/dhernz/project-olympus-fe)
 - [Backend Repo](https://github.com/KaiStryker/olympus-backend)
 - [Twitter](https://twitter.com/ProtocolOlympus)
@@ -12,6 +13,7 @@
 Claim, Collect, Upgrade, Attack..
 
 ## The Protocol
+Olympus is a generalized standard for pinning data to real world locations in the metaverse. Our infrastructure will provide application specific extensions that enable different use cases (ex. AR, real estate, events). Our developer SDK will provide rapid development APIs to easily build engaging AR experiences for web3 communities.
 
 ### Partnerships
 
@@ -22,19 +24,18 @@ Our first partnership is with Froth NYC https://www.instagram.com/frothnewyork/?
 ## Technologies
 
 - Coinbase Wallet
+Coinbase Wallet is used to get the users wallet address and also authorize and validate transactions on the blockchain.
 
-
-- Google Maps JavaScript API (Kian)
-We are using the Google Maps React library to render an interactive view of AR locations. 
-
-- Backend and Database (Firebase)
-We are utilizing Firebase to track metadata about each AR location. It is also used to pull information about how many tokens have been accrued at a location. This is called when players try to collect tokens from a location. 
-
-- Smart Contracts (Solidity, Polygon)
+- Polygon Smart Contracts
 We created two custom smart contracts. One for minting 1 trillion $OLY reward tokens and one for in-game player interactions. The Player interactions are vandalize: takes X amount of tokens out of the players wallet to reduce a locations health points. , upgrade: takes X amount of tokens out of the players wallet to reduce a locations health points, claim: distributes $OLY token rewards to users for daily and multiplier bonuses. The user has to approve the transaction contract to transfer tokens. The contracts inherit the ERC-2771 context contract which enables gasless transactions. 
 
-- thirdweb
+- thirdweb SDK
 We are using thirdweb to deploy our contracts onto the Polygon L2 blockchain. We utilized the thirdweb SDK to facilitate our contract interactions and authorize wallets through their contract authorization script. This script provide a cookie to the user to validate their wallet once every 6 hours rather than requiring the user to re-validate for every transaction. We are using OpenZeppelin defender for their relay service, which is utilized to conduct gasless transacations on behalf of the user.
+- Google Maps JavaScript API
+We are using the Google Maps React library to render an interactive view of AR locations. 
+
+- Backend APIs and Database (Firebase)
+We are utilizing Firebase to track metadata about each AR location. It is also used to pull information about how many tokens have been accrued at a location. This is called when players try to collect tokens from a location. 
 
 - IPFS and Storj
 We are using thirdweb deploy to pin the ABI to IPFS. In addition we are using Storj IPFS pinning to host in-game static assets.
