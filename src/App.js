@@ -7,7 +7,7 @@ import { useWeb3React } from "@web3-react/core";
 import Button from '@mui/material/Button';
 import Map from "./components/Map";
 import { truncateAddress } from "./utils";
-
+import Chip from '@mui/material/Chip';
 
 const CoinbaseWallet = new WalletLinkConnector({
   url: `https://mainnet.infura.io/v3/${process.env.REACT_APP_INFURA_KEY}`,
@@ -36,8 +36,9 @@ function App() {
       <div className="toolbar">
       <img alt='logo' style={{ width: 140 }} src="./Olympus-Game-Logo.png" />
       <div className="wallet">
+      <Chip label="$OLY: 10" style={{color: 'white', backgroundColor: 'grey', marginRight: "1rem", fontSize: ".6rem"}}/>
         <Button variant="contained"
-        style={{ marginRight: '1rem' }}
+        style={{ marginRight: '1rem', fontSize: '.6rem' }}
           onClick={() => {
             activate(Injected);
           }}
@@ -45,7 +46,7 @@ function App() {
           {account ? <div>{truncateAddress(account)}</div> : 'Connect Wallet'}
 
         </Button>
-        <Button variant="outlined" onClick={deactivate}>Disconnect</Button>
+        {/* <Button variant="outlined" onClick={deactivate}>Disconnect</Button> */}
         
       </div>  
       </div>
