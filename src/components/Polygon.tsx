@@ -16,9 +16,9 @@ interface Props {
 
 export const PolygonComponent: React.FC<Props> = ({ polygon }) => {
   const defaultOptions = {
-    fillColor: "lightblue",
-    fillOpacity: 1,
-    strokeColor: "red",
+    fillColor: "blue",
+    fillOpacity: 0.2,
+    strokeColor: "purple",
     strokeOpacity: 1,
     strokeWeight: 2,
     clickable: false,
